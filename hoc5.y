@@ -174,13 +174,10 @@ asigncoord:	VARCRD '=' binstr	{
 						}
 		;
 			
-binstr: binstr instr	{ 	maq.code("suma");		}
-		| 'c'			{	maq.limpiarDireccionesVar(); maq.banderaVar=false; maq.code("comienza");}
-		///////////////////////////////////////////////////////////////////////////////////////////////////
+binstr: 'c'			{	maq.limpiarDireccionesVar(); maq.banderaVar=false; maq.code("comienza");}
 		| expcoord 		    {	maq.code("concatenarCoordenadas");maq.restablecerBandera();}
-		///////////////////////////////////////////////////////////////////////////////////////////////////
 		;
-expcoord: 	  expcoord '+' expcoord	{ 	
+expcoord: expcoord '+' expcoord	{ 	
 							maq.code("sumafinal");							
 						}
 		| expcoord '-' expcoord 	{ 	
@@ -191,8 +188,7 @@ expcoord: 	  expcoord '+' expcoord	{
 		
 sec:	 'c'			{ 	maq.code("comienza"); 	}
 		| sec instr		{ 	maq.code("suma");		}
-		| VARCRD		{	
-							maq.code("varPush");
+		| VARCRD		{	maq.code("varPush");
                       		maq.code((Cadena) $1.obj);
                       		maq.code("getVarCoordValue");
 						}		

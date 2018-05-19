@@ -57,28 +57,27 @@
 
   44  asigncoord : VARCRD '=' binstr
 
-  45  binstr : binstr instr
-  46         | 'c'
-  47         | expcoord
+  45  binstr : 'c'
+  46         | expcoord
 
-  48  expcoord : expcoord '+' expcoord
-  49           | expcoord '-' expcoord
-  50           | sec
+  47  expcoord : expcoord '+' expcoord
+  48           | expcoord '-' expcoord
+  49           | sec
 
-  51  sec : 'c'
-  52      | sec instr
-  53      | VARCRD
+  50  sec : 'c'
+  51      | sec instr
+  52      | VARCRD
 
-  54  instr : 'e'
-  55        | 'n'
-  56        | 'o'
-  57        | 's'
-  58        | 'u'
-  59        | 'd'
-  60        | '&'
-  61        | '%'
-  62        | '#'
-  63        | '"'
+  53  instr : 'e'
+  54        | 'n'
+  55        | 'o'
+  56        | 's'
+  57        | 'u'
+  58        | 'd'
+  59        | '&'
+  60        | '%'
+  61        | '#'
+  62        | '"'
 
 state 0
 	$accept : . list $end  (0)
@@ -169,9 +168,9 @@ state 7
 
 
 state 8
-	sec : 'c' .  (51)
+	sec : 'c' .  (50)
 
-	.  reduce 51
+	.  reduce 50
 
 
 state 9
@@ -210,35 +209,35 @@ state 9
 
 state 10
 	asigncoord : VARCRD . '=' binstr  (44)
-	sec : VARCRD .  (53)
+	sec : VARCRD .  (52)
 
 	'='  shift 27
-	BLTIN  reduce 53
-	IF  reduce 53
-	ELSE  reduce 53
-	WHILE  reduce 53
-	FOR  reduce 53
-	PRINT  reduce 53
-	NUMBER  reduce 53
-	'c'  reduce 53
-	VAR  reduce 53
-	VARCRD  reduce 53
-	'-'  reduce 53
-	'+'  reduce 53
-	'\n'  reduce 53
-	'('  reduce 53
-	'{'  reduce 53
-	'}'  reduce 53
-	'e'  reduce 53
-	'n'  reduce 53
-	'o'  reduce 53
-	's'  reduce 53
-	'u'  reduce 53
-	'd'  reduce 53
-	'&'  reduce 53
-	'%'  reduce 53
-	'#'  reduce 53
-	'"'  reduce 53
+	BLTIN  reduce 52
+	IF  reduce 52
+	ELSE  reduce 52
+	WHILE  reduce 52
+	FOR  reduce 52
+	PRINT  reduce 52
+	NUMBER  reduce 52
+	'c'  reduce 52
+	VAR  reduce 52
+	VARCRD  reduce 52
+	'-'  reduce 52
+	'+'  reduce 52
+	'\n'  reduce 52
+	'('  reduce 52
+	'{'  reduce 52
+	'}'  reduce 52
+	'e'  reduce 52
+	'n'  reduce 52
+	'o'  reduce 52
+	's'  reduce 52
+	'u'  reduce 52
+	'd'  reduce 52
+	'&'  reduce 52
+	'%'  reduce 52
+	'#'  reduce 52
+	'"'  reduce 52
 
 
 state 11
@@ -337,8 +336,8 @@ state 17
 state 18
 	list : list expcoord . '\n'  (7)
 	stmt : expcoord .  (12)
-	expcoord : expcoord . '+' expcoord  (48)
-	expcoord : expcoord . '-' expcoord  (49)
+	expcoord : expcoord . '+' expcoord  (47)
+	expcoord : expcoord . '-' expcoord  (48)
 
 	'-'  shift 45
 	'+'  shift 46
@@ -371,19 +370,9 @@ state 21
 	.  error
 
 
-22: shift/reduce conflict (shift 52, reduce 50) on 'e'
-22: shift/reduce conflict (shift 53, reduce 50) on 'n'
-22: shift/reduce conflict (shift 54, reduce 50) on 'o'
-22: shift/reduce conflict (shift 55, reduce 50) on 's'
-22: shift/reduce conflict (shift 56, reduce 50) on 'u'
-22: shift/reduce conflict (shift 57, reduce 50) on 'd'
-22: shift/reduce conflict (shift 58, reduce 50) on '&'
-22: shift/reduce conflict (shift 59, reduce 50) on '%'
-22: shift/reduce conflict (shift 60, reduce 50) on '#'
-22: shift/reduce conflict (shift 61, reduce 50) on '"'
 state 22
-	expcoord : sec .  (50)
-	sec : sec . instr  (52)
+	expcoord : sec .  (49)
+	sec : sec . instr  (51)
 
 	'e'  shift 52
 	'n'  shift 53
@@ -395,22 +384,22 @@ state 22
 	'%'  shift 59
 	'#'  shift 60
 	'"'  shift 61
-	BLTIN  reduce 50
-	IF  reduce 50
-	ELSE  reduce 50
-	WHILE  reduce 50
-	FOR  reduce 50
-	PRINT  reduce 50
-	NUMBER  reduce 50
-	'c'  reduce 50
-	VAR  reduce 50
-	VARCRD  reduce 50
-	'-'  reduce 50
-	'+'  reduce 50
-	'\n'  reduce 50
-	'('  reduce 50
-	'{'  reduce 50
-	'}'  reduce 50
+	BLTIN  reduce 49
+	IF  reduce 49
+	ELSE  reduce 49
+	WHILE  reduce 49
+	FOR  reduce 49
+	PRINT  reduce 49
+	NUMBER  reduce 49
+	'c'  reduce 49
+	VAR  reduce 49
+	VARCRD  reduce 49
+	'-'  reduce 49
+	'+'  reduce 49
+	'\n'  reduce 49
+	'('  reduce 49
+	'{'  reduce 49
+	'}'  reduce 49
 
 	instr  goto 62
 
@@ -728,7 +717,7 @@ state 44
 
 
 state 45
-	expcoord : expcoord '-' . expcoord  (49)
+	expcoord : expcoord '-' . expcoord  (48)
 
 	'c'  shift 8
 	VARCRD  shift 66
@@ -739,7 +728,7 @@ state 45
 
 
 state 46
-	expcoord : expcoord '+' . expcoord  (48)
+	expcoord : expcoord '+' . expcoord  (47)
 
 	'c'  shift 8
 	VARCRD  shift 66
@@ -838,69 +827,69 @@ state 51
 
 
 state 52
-	instr : 'e' .  (54)
+	instr : 'e' .  (53)
+
+	.  reduce 53
+
+
+state 53
+	instr : 'n' .  (54)
 
 	.  reduce 54
 
 
-state 53
-	instr : 'n' .  (55)
+state 54
+	instr : 'o' .  (55)
 
 	.  reduce 55
 
 
-state 54
-	instr : 'o' .  (56)
+state 55
+	instr : 's' .  (56)
 
 	.  reduce 56
 
 
-state 55
-	instr : 's' .  (57)
+state 56
+	instr : 'u' .  (57)
 
 	.  reduce 57
 
 
-state 56
-	instr : 'u' .  (58)
+state 57
+	instr : 'd' .  (58)
 
 	.  reduce 58
 
 
-state 57
-	instr : 'd' .  (59)
+state 58
+	instr : '&' .  (59)
 
 	.  reduce 59
 
 
-state 58
-	instr : '&' .  (60)
+state 59
+	instr : '%' .  (60)
 
 	.  reduce 60
 
 
-state 59
-	instr : '%' .  (61)
+state 60
+	instr : '#' .  (61)
 
 	.  reduce 61
 
 
-state 60
-	instr : '#' .  (62)
+state 61
+	instr : '"' .  (62)
 
 	.  reduce 62
 
 
-state 61
-	instr : '"' .  (63)
-
-	.  reduce 63
-
-
 state 62
-	sec : sec instr .  (52)
+	sec : sec instr .  (51)
 
-	.  reduce 52
+	.  reduce 51
 
 
 state 63
@@ -975,34 +964,65 @@ state 64
 	'}'  reduce 8
 
 
-65: reduce/reduce conflict (reduce 46, reduce 51) on BLTIN
-65: reduce/reduce conflict (reduce 46, reduce 51) on IF
-65: reduce/reduce conflict (reduce 46, reduce 51) on ELSE
-65: reduce/reduce conflict (reduce 46, reduce 51) on WHILE
-65: reduce/reduce conflict (reduce 46, reduce 51) on FOR
-65: reduce/reduce conflict (reduce 46, reduce 51) on PRINT
-65: reduce/reduce conflict (reduce 46, reduce 51) on NUMBER
-65: reduce/reduce conflict (reduce 46, reduce 51) on 'c'
-65: reduce/reduce conflict (reduce 46, reduce 51) on VAR
-65: reduce/reduce conflict (reduce 46, reduce 51) on VARCRD
-65: reduce/reduce conflict (reduce 46, reduce 51) on '\n'
-65: reduce/reduce conflict (reduce 46, reduce 51) on '('
-65: reduce/reduce conflict (reduce 46, reduce 51) on '{'
-65: reduce/reduce conflict (reduce 46, reduce 51) on '}'
-65: reduce/reduce conflict (reduce 46, reduce 51) on 'e'
-65: reduce/reduce conflict (reduce 46, reduce 51) on 'n'
-65: reduce/reduce conflict (reduce 46, reduce 51) on 'o'
-65: reduce/reduce conflict (reduce 46, reduce 51) on 's'
-65: reduce/reduce conflict (reduce 46, reduce 51) on 'u'
-65: reduce/reduce conflict (reduce 46, reduce 51) on 'd'
-65: reduce/reduce conflict (reduce 46, reduce 51) on '&'
-65: reduce/reduce conflict (reduce 46, reduce 51) on '%'
-65: reduce/reduce conflict (reduce 46, reduce 51) on '#'
-65: reduce/reduce conflict (reduce 46, reduce 51) on '"'
+65: reduce/reduce conflict (reduce 45, reduce 50) on BLTIN
+65: reduce/reduce conflict (reduce 45, reduce 50) on IF
+65: reduce/reduce conflict (reduce 45, reduce 50) on ELSE
+65: reduce/reduce conflict (reduce 45, reduce 50) on WHILE
+65: reduce/reduce conflict (reduce 45, reduce 50) on FOR
+65: reduce/reduce conflict (reduce 45, reduce 50) on PRINT
+65: reduce/reduce conflict (reduce 45, reduce 50) on NUMBER
+65: reduce/reduce conflict (reduce 45, reduce 50) on 'c'
+65: reduce/reduce conflict (reduce 45, reduce 50) on VAR
+65: reduce/reduce conflict (reduce 45, reduce 50) on VARCRD
+65: reduce/reduce conflict (reduce 45, reduce 50) on '\n'
+65: reduce/reduce conflict (reduce 45, reduce 50) on '('
+65: reduce/reduce conflict (reduce 45, reduce 50) on '{'
+65: reduce/reduce conflict (reduce 45, reduce 50) on '}'
 state 65
-	binstr : 'c' .  (46)
-	sec : 'c' .  (51)
+	binstr : 'c' .  (45)
+	sec : 'c' .  (50)
 
+	BLTIN  reduce 45
+	IF  reduce 45
+	ELSE  reduce 45
+	WHILE  reduce 45
+	FOR  reduce 45
+	PRINT  reduce 45
+	NUMBER  reduce 45
+	'c'  reduce 45
+	VAR  reduce 45
+	VARCRD  reduce 45
+	'-'  reduce 50
+	'+'  reduce 50
+	'\n'  reduce 45
+	'('  reduce 45
+	'{'  reduce 45
+	'}'  reduce 45
+	'e'  reduce 50
+	'n'  reduce 50
+	'o'  reduce 50
+	's'  reduce 50
+	'u'  reduce 50
+	'd'  reduce 50
+	'&'  reduce 50
+	'%'  reduce 50
+	'#'  reduce 50
+	'"'  reduce 50
+
+
+state 66
+	sec : VARCRD .  (52)
+
+	.  reduce 52
+
+
+state 67
+	binstr : expcoord .  (46)
+	expcoord : expcoord . '+' expcoord  (47)
+	expcoord : expcoord . '-' expcoord  (48)
+
+	'-'  shift 45
+	'+'  shift 46
 	BLTIN  reduce 46
 	IF  reduce 46
 	ELSE  reduce 46
@@ -1013,93 +1033,16 @@ state 65
 	'c'  reduce 46
 	VAR  reduce 46
 	VARCRD  reduce 46
-	'-'  reduce 51
-	'+'  reduce 51
 	'\n'  reduce 46
 	'('  reduce 46
 	'{'  reduce 46
 	'}'  reduce 46
-	'e'  reduce 46
-	'n'  reduce 46
-	'o'  reduce 46
-	's'  reduce 46
-	'u'  reduce 46
-	'd'  reduce 46
-	'&'  reduce 46
-	'%'  reduce 46
-	'#'  reduce 46
-	'"'  reduce 46
-
-
-state 66
-	sec : VARCRD .  (53)
-
-	.  reduce 53
-
-
-state 67
-	binstr : expcoord .  (47)
-	expcoord : expcoord . '+' expcoord  (48)
-	expcoord : expcoord . '-' expcoord  (49)
-
-	'-'  shift 45
-	'+'  shift 46
-	BLTIN  reduce 47
-	IF  reduce 47
-	ELSE  reduce 47
-	WHILE  reduce 47
-	FOR  reduce 47
-	PRINT  reduce 47
-	NUMBER  reduce 47
-	'c'  reduce 47
-	VAR  reduce 47
-	VARCRD  reduce 47
-	'\n'  reduce 47
-	'('  reduce 47
-	'{'  reduce 47
-	'}'  reduce 47
-	'e'  reduce 47
-	'n'  reduce 47
-	'o'  reduce 47
-	's'  reduce 47
-	'u'  reduce 47
-	'd'  reduce 47
-	'&'  reduce 47
-	'%'  reduce 47
-	'#'  reduce 47
-	'"'  reduce 47
 
 
 state 68
 	asigncoord : VARCRD '=' binstr .  (44)
-	binstr : binstr . instr  (45)
 
-	'e'  shift 52
-	'n'  shift 53
-	'o'  shift 54
-	's'  shift 55
-	'u'  shift 56
-	'd'  shift 57
-	'&'  shift 58
-	'%'  shift 59
-	'#'  shift 60
-	'"'  shift 61
-	BLTIN  reduce 44
-	IF  reduce 44
-	ELSE  reduce 44
-	WHILE  reduce 44
-	FOR  reduce 44
-	PRINT  reduce 44
-	NUMBER  reduce 44
-	'c'  reduce 44
-	VAR  reduce 44
-	VARCRD  reduce 44
-	'\n'  reduce 44
-	'('  reduce 44
-	'{'  reduce 44
-	'}'  reduce 44
-
-	instr  goto 95
+	.  reduce 44
 
 
 state 69
@@ -1175,8 +1118,8 @@ state 74
 
 state 75
 	stmt : expcoord .  (12)
-	expcoord : expcoord . '+' expcoord  (48)
-	expcoord : expcoord . '-' expcoord  (49)
+	expcoord : expcoord . '+' expcoord  (47)
+	expcoord : expcoord . '-' expcoord  (48)
 
 	'-'  shift 45
 	'+'  shift 46
@@ -1670,19 +1613,19 @@ state 86
 
 
 state 87
-	expcoord : expcoord . '+' expcoord  (48)
-	expcoord : expcoord . '-' expcoord  (49)
-	expcoord : expcoord '-' expcoord .  (49)
+	expcoord : expcoord . '+' expcoord  (47)
+	expcoord : expcoord . '-' expcoord  (48)
+	expcoord : expcoord '-' expcoord .  (48)
 
-	.  reduce 49
+	.  reduce 48
 
 
 state 88
-	expcoord : expcoord . '+' expcoord  (48)
-	expcoord : expcoord '+' expcoord .  (48)
-	expcoord : expcoord . '-' expcoord  (49)
+	expcoord : expcoord . '+' expcoord  (47)
+	expcoord : expcoord '+' expcoord .  (47)
+	expcoord : expcoord . '-' expcoord  (48)
 
-	.  reduce 48
+	.  reduce 47
 
 
 state 89
@@ -1710,7 +1653,7 @@ state 89
 	'*'  shift 40
 	'/'  shift 41
 	'^'  shift 42
-	')'  shift 96
+	')'  shift 95
 	.  error
 
 
@@ -1720,7 +1663,7 @@ state 90
 
 	.  reduce 24
 
-	end  goto 97
+	end  goto 96
 
 
 state 91
@@ -1730,7 +1673,7 @@ state 91
 
 	.  reduce 24
 
-	end  goto 98
+	end  goto 97
 
 
 state 92
@@ -1764,7 +1707,7 @@ state 92
 state 93
 	stmt : for '(' inicio . ';' cond ';' inc ')' stmt end  (16)
 
-	';'  shift 99
+	';'  shift 98
 	.  error
 
 
@@ -1775,29 +1718,23 @@ state 94
 
 
 state 95
-	binstr : binstr instr .  (45)
-
-	.  reduce 45
-
-
-state 96
 	cond : '(' exp ')' .  (18)
 
 	.  reduce 18
 
 
-state 97
+state 96
 	stmt : while cond stmt end .  (13)
 
 	.  reduce 13
 
 
-98: shift/reduce conflict (shift 100, reduce 14) on ELSE
-state 98
+97: shift/reduce conflict (shift 99, reduce 14) on ELSE
+state 97
 	stmt : if cond stmt end .  (14)
 	stmt : if cond stmt end . ELSE stmt end  (15)
 
-	ELSE  shift 100
+	ELSE  shift 99
 	BLTIN  reduce 14
 	IF  reduce 14
 	WHILE  reduce 14
@@ -1813,16 +1750,16 @@ state 98
 	'}'  reduce 14
 
 
-state 99
+state 98
 	stmt : for '(' inicio ';' . cond ';' inc ')' stmt end  (16)
 
 	'('  shift 48
 	.  error
 
-	cond  goto 101
+	cond  goto 100
 
 
-state 100
+state 99
 	stmt : if cond stmt end ELSE . stmt end  (15)
 
 	BLTIN  shift 2
@@ -1839,7 +1776,7 @@ state 100
 	.  error
 
 	asgn  goto 24
-	stmt  goto 102
+	stmt  goto 101
 	exp  goto 73
 	asigncoord  goto 74
 	expcoord  goto 75
@@ -1849,23 +1786,23 @@ state 100
 	sec  goto 22
 
 
-state 101
+state 100
 	stmt : for '(' inicio ';' cond . ';' inc ')' stmt end  (16)
 
-	';'  shift 103
+	';'  shift 102
 	.  error
 
 
-state 102
+state 101
 	stmt : if cond stmt end ELSE stmt . end  (15)
 	end : .  (24)
 
 	.  reduce 24
 
-	end  goto 104
+	end  goto 103
 
 
-state 103
+state 102
 	stmt : for '(' inicio ';' cond ';' . inc ')' stmt end  (16)
 
 	BLTIN  shift 2
@@ -1875,17 +1812,17 @@ state 103
 	.  error
 
 	asgn  goto 24
-	exp  goto 105
-	inc  goto 106
+	exp  goto 104
+	inc  goto 105
 
 
-state 104
+state 103
 	stmt : if cond stmt end ELSE stmt end .  (15)
 
 	.  reduce 15
 
 
-state 105
+state 104
 	inc : exp .  (23)
 	exp : exp . '+' exp  (32)
 	exp : exp . '-' exp  (33)
@@ -1913,14 +1850,14 @@ state 105
 	')'  reduce 23
 
 
-state 106
+state 105
 	stmt : for '(' inicio ';' cond ';' inc . ')' stmt end  (16)
 
-	')'  shift 107
+	')'  shift 106
 	.  error
 
 
-state 107
+state 106
 	stmt : for '(' inicio ';' cond ';' inc ')' . stmt end  (16)
 
 	BLTIN  shift 2
@@ -1937,7 +1874,7 @@ state 107
 	.  error
 
 	asgn  goto 24
-	stmt  goto 108
+	stmt  goto 107
 	exp  goto 73
 	asigncoord  goto 74
 	expcoord  goto 75
@@ -1947,16 +1884,16 @@ state 107
 	sec  goto 22
 
 
-state 108
+state 107
 	stmt : for '(' inicio ';' cond ';' inc ')' stmt . end  (16)
 	end : .  (24)
 
 	.  reduce 24
 
-	end  goto 109
+	end  goto 108
 
 
-state 109
+state 108
 	stmt : for '(' inicio ';' cond ';' inc ')' stmt end .  (16)
 
 	.  reduce 16
@@ -1966,10 +1903,9 @@ State 14 contains 1 shift/reduce conflict.
 State 16 contains 1 shift/reduce conflict.
 State 17 contains 1 shift/reduce conflict.
 State 18 contains 1 shift/reduce conflict.
-State 22 contains 10 shift/reduce conflicts.
-State 65 contains 24 reduce/reduce conflicts.
-State 98 contains 1 shift/reduce conflict.
+State 65 contains 14 reduce/reduce conflicts.
+State 97 contains 1 shift/reduce conflict.
 
 
 40 terminals, 18 nonterminals
-64 grammar rules, 110 states
+63 grammar rules, 109 states
