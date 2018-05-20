@@ -24,7 +24,7 @@ import javax.swing.*;
 %left '*' '/' '^'
 %right IF ELSE EQ NEQ GT GE LT LE 
 
-%% /* A continuación las reglas gramaticales y las acciones */
+%% /* A continuaci?n las reglas gramaticales y las acciones */
 
 list:   
    | list '\n'
@@ -165,7 +165,7 @@ exp:  NUMBER                      { Numero n = (Numero) $1.obj;
      | exp LE exp                 { maq.code("le");}
     ;
 	
-/*gramática de coordenadas*/
+/*gram?tica de coordenadas*/
 
 asigncoord:	VARCRD '=' binstr	{
 							maq.code("varPush");
@@ -174,21 +174,19 @@ asigncoord:	VARCRD '=' binstr	{
 						}
 		;
 			
-binstr: 'c'			{	maq.limpiarDireccionesVar(); maq.banderaVar=false; maq.code("comienza");}
+binstr: binstr instr	{ 	maq.code("suma");		}
+		| 'c'			{	maq.limpiarDireccionesVar(); maq.banderaVar=false; maq.code("comienza");}
 		| expcoord 		    {	maq.code("concatenarCoordenadas");maq.restablecerBandera();}
 		;
-expcoord: expcoord '+' expcoord	{ 	
-							maq.code("sumafinal");							
-						}
-		| expcoord '-' expcoord 	{ 	
-							maq.code("restafinal");							
-						}
+expcoord: 	  expcoord '+' expcoord	{ maq.code("sumafinal");	}
+		| expcoord '-' expcoord 	{ maq.code("restafinal");	}
 		| sec			{}
 		;
 		
 sec:	 'c'			{ 	maq.code("comienza"); 	}
 		| sec instr		{ 	maq.code("suma");		}
-		| VARCRD		{	maq.code("varPush");
+		| VARCRD		{	
+							maq.code("varPush");
                       		maq.code((Cadena) $1.obj);
                       		maq.code("getVarCoordValue");
 						}		
